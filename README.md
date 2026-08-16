@@ -1,1 +1,1 @@
-[https://htmlpreview.github.io/?https://github.com/IngBarcelli/Adventure-Works/blob/main/dbx/Silever_layer.html](https://htmlpreview.github.io/?https://github.com/IngBarcelli/Adventure-Works/blob/main/dbx/Silever_layer.html)
+https://ingbarcelli.github.io/Adventure-Works/dbx/Silever_layer.html
