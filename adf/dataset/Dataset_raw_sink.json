@@ -1,0 +1,40 @@
+{
+	"name": "Dataset_raw_sink",
+	"properties": {
+		"description": "Es el data set donde se va a guardar toda la información extraida de Github dentro del datalake",
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"p_sink_folder": {
+				"type": "string"
+			},
+			"p_sink_file": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().p_sink_file",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().p_sink_folder",
+					"type": "Expression"
+				},
+				"fileSystem": "bronce"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

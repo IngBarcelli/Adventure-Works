@@ -1,0 +1,15 @@
+{
+	"name": "Fucktory",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "chilecentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "37737788-5756-44b6-8080-ad9895e388ed",
+		"tenantId": "0c599386-7acd-405d-8338-0a84a7baca4d"
+	}
+}
