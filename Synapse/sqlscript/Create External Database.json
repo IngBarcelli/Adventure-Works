@@ -1,0 +1,17 @@
+{
+	"name": "Create External Database",
+	"properties": {
+		"content": {
+			"query": "-- 1. Crear la credencial\nCREATE DATABASE SCOPED CREDENTIAL cred_ABL\nWITH\n    IDENTITY = 'Managed Identity';\nGO\n\n-- 2. Crear el origen de datos externo (Silver)\nCREATE EXTERNAL DATA SOURCE source_silver\nWITH\n(\n    LOCATION = 'https://lakeylakey3.dfs.core.windows.net/silver',\n    CREDENTIAL = cred_ABL\n);\nGO\n\n-- 3. Crear el sink de los datos (Gold)\nCREATE EXTERNAL DATA SOURCE source_gold\nWITH\n(\n    LOCATION = 'https://lakeylakey3.dfs.core.windows.net/gold',\n    CREDENTIAL = cred_ABL\n);\nGO\n\n-- 4. Crear el formato de archivo Parquet\nCREATE EXTERNAL FILE FORMAT format_parquet\nWITH\n(\n    FORMAT_TYPE = PARQUET,\n    DATA_COMPRESSION = 'org.apache.hadoop.io.compress.SnappyCodec'\n);\nGO\n\n--------------------------------------\n--create external table EXTSALES\n\nCREATE EXTERNAL TABLE gold.extsales\nWITH\n(\n    LOCATION = 'external sales',\n    DATA_SOURCE =  source_gold,\n    FILE_FORMAT = format_parquet,\n)\nAS\nSELECT * FROM gold.sales\n\nselect * from gold.sales",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "AW_database",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"name": "Vista Customer",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP 2000 \n    CustomerKey, \n    FirstName, \n    LastName\nFROM OPENROWSET(\n    BULK 'https://lakeylakey3.dfs.core.windows.net/silver/AdventureWorks_Customer/*.parquet',\n    FORMAT = 'PARQUET'\n) WITH (\n    CustomerKey INT,\n    FirstName VARCHAR(100) COLLATE Latin1_General_100_BIN2_UTF8,\n    LastName VARCHAR(100) COLLATE Latin1_General_100_BIN2_UTF8\n) as query_test;",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "AW_database",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

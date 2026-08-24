@@ -1,0 +1,17 @@
+{
+	"name": "Preuba Gemini 2",
+	"properties": {
+		"content": {
+			"query": "WITH DatosClientes AS (\n    SELECT *\n    FROM OPENROWSET(\n        BULK 'https://lakeylakey3.dfs.core.windows.net/silver/AdventureWorks_Customer/*.parquet',\n        FORMAT = 'PARQUET'\n    ) AS tabla_base\n)\nSELECT TOP 10 *\nFROM DatosClientes\nWHERE CustomerKey IS NOT NULL;",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "AW_database",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"name": "Preuba Gemini 1",
+	"properties": {
+		"content": {
+			"query": "SELECT \n    COUNT(*) AS Total_Filas,\n    COUNT(CustomerKey) AS Filas_Con_Datos\nFROM \n    OPENROWSET(\n        BULK 'https://lakeylakey3.dfs.core.windows.net/silver/AdventureWorks_Customer/*.parquet',\n        FORMAT = 'PARQUET'\n    ) as query_test;",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "AW_database",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

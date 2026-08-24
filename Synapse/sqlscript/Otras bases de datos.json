@@ -1,0 +1,17 @@
+{
+	"name": "Otras bases de datos",
+	"properties": {
+		"content": {
+			"query": "/* ============================================================\n   Serverless SQL Pool - Capa Gold: tablas externas (CETAS)\n   Basado en las vistas gold.* que leen del contenedor silver.\n\n   Requisitos previos: cred_ABL, source_gold, format_parquet\n   y el esquema [gold] deben existir.\n\n   IMPORTANTE: cada carpeta indicada en LOCATION NO debe existir\n   antes de ejecutar. El CETAS la crea.\n   ============================================================ */\n\n\n--------------------------------------\n-- CALENDAR  (vista: gold.calendar)\nCREATE EXTERNAL TABLE gold.extcalendar\nWITH\n(\n    LOCATION    = 'external calendar',\n    DATA_SOURCE = source_gold,\n    FILE_FORMAT = format_parquet\n)\nAS\nSELECT * FROM gold.calendar;\nGO\n\n--------------------------------------\n-- CUSTOMER  (vista: gold.Customer -- singular)\nCREATE EXTERNAL TABLE gold.extcustomer\nWITH\n(\n    LOCATION    = 'external customer',\n    DATA_SOURCE = source_gold,\n    FILE_FORMAT = format_parquet\n)\nAS\nSELECT * FROM gold.Customer;\nGO\n\n--------------------------------------\n-- PRODUCT_CATEGORIES  (vista: gold.Product_Categories)\nCREATE EXTERNAL TABLE gold.extproduct_categories\nWITH\n(\n    LOCATION    = 'external product_categories',\n    DATA_SOURCE = source_gold,\n    FILE_FORMAT = format_parquet\n)\nAS\nSELECT * FROM gold.Product_Categories;\nGO\n\n--------------------------------------\n-- PRODUCT_SUBCATEGORIES  (vista: gold.Product_Subcategories)\nCREATE EXTERNAL TABLE gold.extproduct_subcategories\nWITH\n(\n    LOCATION    = 'external product_subcategories',\n    DATA_SOURCE = source_gold,\n    FILE_FORMAT = format_parquet\n)\nAS\nSELECT * FROM gold.Product_Subcategories;\nGO\n\n--------------------------------------\n-- PRODUCTS  (vista: gold.Products)\nCREATE EXTERNAL TABLE gold.extproducts\nWITH\n(\n    LOCATION    = 'external products',\n    DATA_SOURCE = source_gold,\n    FILE_FORMAT = format_parquet\n)\nAS\nSELECT * FROM gold.Products;\nGO\n\n--------------------------------------\n-- RETURNS  (vista: gold.Returns -- palabra reservada)\nCREATE EXTERNAL TABLE gold.extreturns\nWITH\n(\n    LOCATION    = 'external returns',\n    DATA_SOURCE = source_gold,\n    FILE_FORMAT = format_parquet\n)\nAS\nSELECT * FROM gold.Retur;\nGO\n\n--------------------------------------\n-- TERRITORIES  (vista: gold.Territories)\nCREATE EXTERNAL TABLE gold.extterritories\nWITH\n(\n    LOCATION    = 'external territories',\n    DATA_SOURCE = source_gold,\n    FILE_FORMAT = format_parquet\n)\nAS\nSELECT * FROM gold.Territories;\nGO\n\n\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "AW_database",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

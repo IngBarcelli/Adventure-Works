@@ -1,0 +1,17 @@
+{
+	"name": "Create External Table",
+	"properties": {
+		"content": {
+			"query": "-- 1. Eliminar la clave maestra actual\nDROP MASTER KEY;\nGO\n\n-- 2. Crear la nueva clave maestra\nCREATE MASTER KEY ENCRYPTION BY PASSWORD = 'C0ntr@señ@1234';\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "AW_database",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
